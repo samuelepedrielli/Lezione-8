@@ -1,0 +1,56 @@
+#Exercise 2
+
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+
+def stat(list):
+    result = []
+    avg = 0.0
+    avg2 = 0.0
+    for i in list:
+        avg2 = avg2+i**2/len(list)
+        avg = avg+i/len(list)
+        result.append(avg)
+        result.append(math.sqrt(avg2-avg**2))
+    return result
+      
+fn = "ex2_data_python_5.txt"
+x = np.loadtxt(fn,skiprows=1,usecols=range(0,5))
+tmin = []
+tmax = []
+years = []
+
+for i in range(0,len(x[:,2])):
+    tmin.append(x[i,2])
+    tmax.append(x[i,3])
+    years.append(int(x[i,0]))
+    
+print("----------------------")
+print("MINIMUM TEMPERATURE (NUMPY) ")
+print("Average: ",np.mean(x[:,2]))
+print("Standard deviation: ",np.std(x[:,2]))
+print("----------------------")
+print("MAXIMUM TEMPERATURE (NUMPY)")
+print("Average: ",np.mean(x[:,3]))
+print("Standard deviation: ",np.std(x[:,3]))
+print("----------------------")
+
+h_tmin = stat(tmin)
+h_tmax = stat(tmax)
+
+print("----------------------")
+print("MINIMUM TEMPERATURE (SAMUELE)")
+print("Average",h_tmin[0])
+print("Standard deviation",h_tmin[1],)
+print("----------------------")
+print("MAXIMUM TEMPERATURE (SAMUELE)")
+print("Average: ",h_tmax[0])
+print("Standard deviation: ",h_tmax[1])
+print("----------------------")
+
+plt.plot(years,tmin,color='blue',label="T min")
+plt.plot(years,tmax,color='red',label="T max")
+plt.xlabel("Year")
+plt.ylabel("Temperature [°C]")
+plt.legend(loc="center")
