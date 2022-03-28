@@ -1,0 +1,24 @@
+#Exercise 4
+
+#il sottomodulo linalg di numpy diagonalizza matrici.
+#np.linalg.eig(M) trova sia autovettori che autovalori.
+#np.linalg.eigvals(M) trova solo gli autovalori
+
+import numpy as np
+
+M = np.loadtxt("pauli.txt",dtype='i',delimiter=' ')
+print(M)
+print("------------------")
+print("------------------")
+
+eival,eivec= np.linalg.eig(M)
+print("np.linalg.eig: ")
+print("------------------")
+print("Eigenvectors: ", eivec)
+print("Eigenvalues: ", eival)
+print("------------------")
+
+eigenvalues= np.linalg.eigvals(M)
+print("np.linalg.eigvals: ")
+print("------------------")
+print("Eigenvalues: ", eigenvalues)
