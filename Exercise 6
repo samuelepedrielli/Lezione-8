@@ -1,0 +1,31 @@
+#Exercise 6
+
+import numpy as np
+import time
+
+for i in range(0,100):
+    zero1 = np.zeros((100,100))
+    zero2 = np.zeros((100,100))
+
+fn = open('M1.txt', 'w')
+t1 = time.time()
+
+for i in range(len(zero1)): #for cycle
+    print(zero1[i],file=fn)
+    
+t2 = time.time()
+fn.close()
+print("----------------------")
+print("time with for cycles: ")
+print(t2-t1)
+print("----------------------")
+
+t3 = time.time()
+
+np.savetxt('M2.txt',zero2) #from library
+
+t4 = time.time()
+print("time with library: ")
+print(t4-t3)
+print("----------------------")
+print("Time difference: ", abs((t4-t3)-(t2-t1)))
