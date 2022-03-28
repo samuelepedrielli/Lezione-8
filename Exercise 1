@@ -1,0 +1,18 @@
+#Exercise 1
+
+import matplotlib.pyplot as plt
+import numpy as np
+ 
+def crea_istogramma (val):
+    print("lista di valori",val)
+    for i in val:
+        print("#"*i, "\n")
+        
+def crea_istogramma_grafico(val):
+    print("values",val)
+    plt.hist(np.arange(0, len(val),1), weights=val, orientation='horizontal')
+    plt.gca().invert_yaxis()
+    plt.show(block=False)
+    
+crea_istogramma(val=[3, 7, 9 ,5])
+crea_istogramma_grafico(val=[3, 7, 9 ,5])
